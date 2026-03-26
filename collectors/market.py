@@ -1,11 +1,14 @@
 import requests
 import random
+import os
 
 
 def get_market_data():
     try:
         # Try Alpha Vantage first (requires free API key from https://www.alphavantage.co/support/#api-key)
-        api_key = "YOUR_ALPHA_VANTAGE_API_KEY"  # Replace with your API key
+        # Replace with your API key
+        api_key = os.getenv("ALPHA_VANTAGE_API_KEY",
+                            "YOUR_ALPHA_VANTAGE_API_KEY")
 
         if api_key != "YOUR_ALPHA_VANTAGE_API_KEY":  # Only try if user has set an API key
             symbols = ["NSEI", "BSESN"]
